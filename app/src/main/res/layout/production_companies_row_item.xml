@@ -11,11 +11,11 @@
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="40dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
         android:foregroundGravity="center_horizontal"
         android:orientation="horizontal"
-        android:scaleType="centerInside"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@id/company_name_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
