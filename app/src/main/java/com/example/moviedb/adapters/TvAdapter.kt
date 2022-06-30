@@ -8,7 +8,14 @@ import com.example.moviedb.R
 import com.example.moviedb.RecyclerItemClickListener
 import com.example.moviedb.models.tvShows.TvShows
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_movie_details.view.*
 import kotlinx.android.synthetic.main.movie_item.view.*
+import kotlinx.android.synthetic.main.movie_item.view.overviewText
+import kotlinx.android.synthetic.main.movie_item.view.tv_first_air_date
+import kotlinx.android.synthetic.main.movie_item.view.tv_poster
+import kotlinx.android.synthetic.main.movie_item.view.tv_title
+import kotlinx.android.synthetic.main.movie_item.view.voteText
+import kotlinx.android.synthetic.main.tv_item.view.*
 
 class TvAdapter(private val tvShows : MutableList<TvShows>, private val listener: RecyclerItemClickListener) : RecyclerView.Adapter<TvAdapter.TvViewHolder>(){
 
@@ -20,6 +27,7 @@ class TvAdapter(private val tvShows : MutableList<TvShows>, private val listener
             itemView.tv_title.text = tvShows.name
             itemView.overviewText.text = tvShows.overview
             itemView.voteText.text = tvShows.vote_average.toString()
+            itemView.tv_first_air_date.text = tvShows.first_air_date
             Picasso.get().load(IMAGE_BASE + tvShows.poster_path).into(itemView.tv_poster);
         }
         init {

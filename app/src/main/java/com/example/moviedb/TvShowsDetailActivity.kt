@@ -12,6 +12,15 @@ import com.example.moviedb.models.tvshowsdetails.TvShowDetails
 import com.example.moviedb.services.tvShowsApi.interfaces.TvPopularApiInterface
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_details.*
+import kotlinx.android.synthetic.main.activity_movie_details.back_poster
+import kotlinx.android.synthetic.main.activity_movie_details.front_poster
+import kotlinx.android.synthetic.main.activity_movie_details.genreRecycler
+import kotlinx.android.synthetic.main.activity_movie_details.languageText
+import kotlinx.android.synthetic.main.activity_movie_details.overview_text
+import kotlinx.android.synthetic.main.activity_movie_details.titleText
+import kotlinx.android.synthetic.main.activity_movie_details.vote_average
+import kotlinx.android.synthetic.main.activity_movie_details.vote_count
+import kotlinx.android.synthetic.main.activity_tv_shows_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,13 +57,25 @@ class TvShowsDetailActivity : AppCompatActivity() {
             override fun onResponse(call: Call<TvShowDetails>, response: Response<TvShowDetails>) {
                 if (response.isSuccessful){
                     response.body()?.let {
-                        titleText.text= it.original_name.toString()
+                        titleText.text= it.name.toString()
                         vote_average.text = it.vote_average.toString()
                         vote_count.text = "/" + it.vote_count.toString()
                         overview_text.text = it.overview.toString()
                         Picasso.get().load(imageUrl + it.backdrop_path).into(back_poster)
                         Picasso.get().load(imageUrl + it.poster_path).into(front_poster)
                         languageText.text = it.original_language.uppercase()
+
+                        if (it.in_production){
+                            statusText.text = "On stream"
+
+                        }
+                        else{
+                            statusText.text = "Ended"
+                        }
+                        tagText.text = it.tagline
+                        firstAirDateText.text = it.first_air_date
+                        popularityText.text = it.popularity.toString()
+                        infoText.text = "Seasons: " + it.number_of_seasons.toString() + " Episodes: " + it.number_of_episodes.toString()
 
                         //Log.i("listeler", "Listeler ${it.genres}")
                         genreList.clear()
