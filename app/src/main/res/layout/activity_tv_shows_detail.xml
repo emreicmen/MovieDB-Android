@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
@@ -42,7 +43,6 @@
         app:layout_constraintStart_toEndOf="@+id/front_poster"
         app:layout_constraintTop_toBottomOf="@+id/titleText"
         app:srcCompat="@drawable/star" />
-
 
     <TextView
         android:id="@+id/languageText"
@@ -113,8 +113,6 @@
         app:layout_constraintStart_toEndOf="@+id/front_poster"
         app:layout_constraintTop_toBottomOf="@+id/info"
         app:srcCompat="@drawable/calendar" />
-
-
 
     <ImageView
         android:id="@+id/back_poster"
@@ -240,6 +238,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:listitem="@layout/genre_row_item" />
+
+    <TextView
+        android:id="@+id/companies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Production Companies"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/genreRecycler"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/companiesRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:textColor="#FFFFFF"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/companies"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/production_companies_row_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

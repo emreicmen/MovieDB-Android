@@ -36,6 +36,9 @@ class TvShowsDetailActivity : AppCompatActivity() {
     private lateinit var genreAdapter: GenreAdapter
     private var genreList = mutableListOf<GenreDetails>()
 
+    private lateinit var companyAdapter: CompanyAdapter
+    private var companyList = mutableListOf<ProductionCompanies>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tv_shows_detail)
@@ -67,7 +70,6 @@ class TvShowsDetailActivity : AppCompatActivity() {
 
                         if (it.in_production){
                             statusText.text = "On stream"
-
                         }
                         else{
                             statusText.text = "Ended"
@@ -81,6 +83,10 @@ class TvShowsDetailActivity : AppCompatActivity() {
                         genreList.clear()
                         genreList.addAll(it.genres)
                         genreAdapter.notifyDataSetChanged()
+
+                        companyList.clear()
+                        companyList.addAll(it.production_companies)
+                        companyAdapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -97,5 +103,13 @@ class TvShowsDetailActivity : AppCompatActivity() {
         genreRecycler.adapter = genreAdapter
         genreRecycler.setHasFixedSize(true)
         genreRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+
+        companyAdapter = CompanyAdapter(
+            companies = companyList
+        )
+        companiesRecyclerView.adapter = companyAdapter
+        companiesRecyclerView.setHasFixedSize(true)
+        companiesRecyclerView.layoutManager = LinearLayoutManager(this,
+            LinearLayoutManager.HORIZONTAL,false)
     }
 }
