@@ -18,7 +18,7 @@ class MovieAdapter(private val movies : MutableList<Movie>, private val listener
 
         fun bindMovie(movie : Movie){
             itemView.tv_title.text = movie.title
-            itemView.tv_first_air_date.text = movie.release_date
+            itemView.tv_first_air_date.text = "Release date : " + movie.release_date
             itemView.overviewText.text = movie.overview
             itemView.voteText.text = movie.vote_average.toString()
             Picasso.get().load(IMAGE_BASE + movie.poster_path).into(itemView.tv_poster)

@@ -5,11 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviedb.R
-import com.example.moviedb.models.CreatedBy
+import com.example.moviedb.models.tvshowsdetails.CreatedBy
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.createdby_row_item.view.*
-import kotlinx.android.synthetic.main.genre_row_item.view.*
-import kotlinx.android.synthetic.main.production_companies_row_item.view.*
 
 class CreatedByAdapter(private val createdBy: MutableList<CreatedBy>) : RecyclerView.Adapter<CreatedByAdapter.CreatedByViewHolder>() {
 

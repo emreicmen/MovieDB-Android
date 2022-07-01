@@ -1,4 +1,4 @@
-package com.example.moviedb.models
+package com.example.moviedb.models.tvshowsdetails
 
 data class CreatedBy (
     val id : Int,

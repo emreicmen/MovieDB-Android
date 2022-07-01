@@ -27,7 +27,7 @@ class TvAdapter(private val tvShows : MutableList<TvShows>, private val listener
             itemView.tv_title.text = tvShows.name
             itemView.overviewText.text = tvShows.overview
             itemView.voteText.text = tvShows.vote_average.toString()
-            itemView.tv_first_air_date.text = tvShows.first_air_date
+            itemView.tv_first_air_date.text = "First release date : " + tvShows.first_air_date
             Picasso.get().load(IMAGE_BASE + tvShows.poster_path).into(itemView.tv_poster);
         }
         init {

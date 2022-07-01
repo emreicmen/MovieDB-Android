@@ -2,18 +2,18 @@ package com.example.moviedb
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviedb.adapters.CompanyAdapter
 import com.example.moviedb.adapters.CreatedByAdapter
 import com.example.moviedb.adapters.GenreAdapter
-import com.example.moviedb.models.CreatedBy
+import com.example.moviedb.adapters.SeasonsAdapter
+import com.example.moviedb.models.tvshowsdetails.CreatedBy
 import com.example.moviedb.models.moviedetails.GenreDetails
 import com.example.moviedb.models.moviedetails.ProductionCompanies
+import com.example.moviedb.models.tvshowsdetails.SeasonsDetails
 import com.example.moviedb.models.tvshowsdetails.TvShowDetails
 import com.example.moviedb.services.tvShowsApi.interfaces.TvPopularApiInterface
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_movie_details.*
 import kotlinx.android.synthetic.main.activity_movie_details.back_poster
 import kotlinx.android.synthetic.main.activity_movie_details.front_poster
 import kotlinx.android.synthetic.main.activity_movie_details.genreRecycler
@@ -43,6 +43,9 @@ class TvShowsDetailActivity : AppCompatActivity() {
 
     private lateinit var createdAdapter: CreatedByAdapter
     private var createdByList = mutableListOf<CreatedBy>()
+
+    private lateinit var seasonsAdapter: SeasonsAdapter
+    private var seasonsList = mutableListOf<SeasonsDetails>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +100,10 @@ class TvShowsDetailActivity : AppCompatActivity() {
                         createdByList.clear()
                         createdByList.addAll(it.created_by)
                         createdAdapter.notifyDataSetChanged()
+
+                        seasonsList.clear()
+                        seasonsList.addAll(it.seasons)
+                        seasonsAdapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -128,6 +135,14 @@ class TvShowsDetailActivity : AppCompatActivity() {
         createdByRecyclerView.adapter = createdAdapter
         createdByRecyclerView.setHasFixedSize(true)
         createdByRecyclerView.layoutManager = LinearLayoutManager(this,
+            LinearLayoutManager.HORIZONTAL,false)
+
+        seasonsAdapter = SeasonsAdapter(
+            seasons = seasonsList
+        )
+        seasonsRecyclerView.adapter = seasonsAdapter
+        seasonsRecyclerView.setHasFixedSize(true)
+        seasonsRecyclerView.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.HORIZONTAL,false)
     }
 }
