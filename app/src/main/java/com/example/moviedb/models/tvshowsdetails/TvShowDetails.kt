@@ -1,5 +1,6 @@
 package com.example.moviedb.models.tvshowsdetails
 
+import com.example.moviedb.models.CreatedBy
 import com.example.moviedb.models.moviedetails.GenreDetails
 import com.example.moviedb.models.moviedetails.ProductionCompanies
 
@@ -21,5 +22,6 @@ data class TvShowDetails (
     val number_of_episodes : Int,
 
     val genres : List<GenreDetails> = mutableListOf(),
-    val production_companies : List<ProductionCompanies> = mutableListOf()
+    val production_companies : List<ProductionCompanies> = mutableListOf(),
+    val created_by : List<CreatedBy> = mutableListOf()
 )

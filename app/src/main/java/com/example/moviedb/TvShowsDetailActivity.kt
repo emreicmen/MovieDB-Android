@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviedb.adapters.CompanyAdapter
+import com.example.moviedb.adapters.CreatedByAdapter
 import com.example.moviedb.adapters.GenreAdapter
+import com.example.moviedb.models.CreatedBy
 import com.example.moviedb.models.moviedetails.GenreDetails
 import com.example.moviedb.models.moviedetails.ProductionCompanies
 import com.example.moviedb.models.tvshowsdetails.TvShowDetails
@@ -38,6 +40,10 @@ class TvShowsDetailActivity : AppCompatActivity() {
 
     private lateinit var companyAdapter: CompanyAdapter
     private var companyList = mutableListOf<ProductionCompanies>()
+
+    private lateinit var createdAdapter: CreatedByAdapter
+    private var createdByList = mutableListOf<CreatedBy>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +93,10 @@ class TvShowsDetailActivity : AppCompatActivity() {
                         companyList.clear()
                         companyList.addAll(it.production_companies)
                         companyAdapter.notifyDataSetChanged()
+
+                        createdByList.clear()
+                        createdByList.addAll(it.created_by)
+                        createdAdapter.notifyDataSetChanged()
                     }
                 }
             }
@@ -110,6 +120,14 @@ class TvShowsDetailActivity : AppCompatActivity() {
         companiesRecyclerView.adapter = companyAdapter
         companiesRecyclerView.setHasFixedSize(true)
         companiesRecyclerView.layoutManager = LinearLayoutManager(this,
+            LinearLayoutManager.HORIZONTAL,false)
+
+        createdAdapter = CreatedByAdapter(
+            createdBy = createdByList
+        )
+        createdByRecyclerView.adapter = createdAdapter
+        createdByRecyclerView.setHasFixedSize(true)
+        createdByRecyclerView.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.HORIZONTAL,false)
     }
 }
